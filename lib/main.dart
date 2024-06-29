@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/init_screen.dart';
-import 'screens/HomeScreen.dart';
+import 'screens/home_screen.dart';
+import 'screens/registration_screen.dart';
 
 void main() {
   runApp(const KarmaApp());
@@ -20,7 +21,8 @@ class KarmaApp extends StatelessWidget {
       ),
       routes: {
         '/home': (context) => const HomeScreen(),
-        '/init' : (context) => const InitialScreen()
+        '/init' : (context) => const InitialScreen(),
+        '/registration' : (context) => const RegistrationScreen()
       },
     );
   }

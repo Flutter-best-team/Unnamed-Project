@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:unnamed_project/screens/HomeScreen.dart';
+import 'package:unnamed_project/screens/home_screen.dart';
 
 class InitialScreen extends StatelessWidget {
   const InitialScreen({super.key});
