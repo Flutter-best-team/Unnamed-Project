@@ -12,14 +12,15 @@ class KarmaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const InitialScreen(),
+      initialRoute: '/init',
       debugShowCheckedModeBanner: false,
       title: "Karma",
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
       routes: {
-        '/home': (context) => HomeScreen(),
+        '/home': (context) => const HomeScreen(),
+        '/init' : (context) => const InitialScreen()
       },
     );
   }
