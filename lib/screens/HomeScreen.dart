@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -25,14 +27,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Karma is a bitch",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Color.fromRGBO(64, 107, 120, 1),
+        backgroundColor: const Color.fromRGBO(64, 107, 120, 1),
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [Color.fromRGBO(64, 107, 120, 1), Color.fromRGBO(29, 47, 56, 1)],
             begin: Alignment.topCenter,
@@ -59,14 +61,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Stack(
                           children: [
                             Container(
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Colors.grey,
                               ),
                             ),
                             FractionallySizedBox(
                               widthFactor: currentProgress, // Set your progress value here (0.0 to 1.0)
                               child: Container(
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   gradient: LinearGradient(
                                     colors: [
                                       Color.fromRGBO(250, 121, 13, 1),
@@ -83,10 +85,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(
                       '${(currentProgress * 100).toStringAsFixed(0)}%',
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -95,23 +97,23 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-              Container(
+              SizedBox(
                 width: 400,
                 height: 400,
                 child: Image.asset('assets/images/img1.png', fit: BoxFit.fill),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(100),
                   ),
-                  backgroundColor: Color.fromRGBO(254, 243, 203, 1),
+                  backgroundColor: const Color.fromRGBO(254, 243, 203, 1),
                 ),
-                child: Text(
-                  'Castomize your character',
+                child: const Text(
+                  'Customize your character',
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -119,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 20), // Add some spacing below the button
+              const SizedBox(height: 20), // Add some spacing below the button
             ],
           ),
         ),
@@ -141,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromRGBO(250, 121, 13, 1),
+        selectedItemColor: const Color.fromRGBO(250, 121, 13, 1),
         onTap: _onItemTapped,
       ),
     );

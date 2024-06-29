@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unnamed_project/screens/HomeScreen.dart';
 
 class InitialScreen extends StatelessWidget {
   const InitialScreen({super.key});
@@ -7,7 +8,7 @@ class InitialScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [Color.fromRGBO(64, 107, 120, 1), Color.fromRGBO(29, 47, 56, 1)],
             begin: Alignment.topCenter,
@@ -26,7 +27,7 @@ class InitialScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             const Text(
               "With us you could not only track your habits, but live freely: without drinking or smoking!",
               textAlign: TextAlign.center,
@@ -35,10 +36,12 @@ class InitialScreen extends StatelessWidget {
                 fontSize: 16,
               ),
             ),
-            SizedBox(height: 20), 
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, "/home");
+                Navigator.pushReplacementNamed(
+                    context,
+                    '/home');
               },
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
