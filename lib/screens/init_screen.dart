@@ -6,15 +6,15 @@ class InitialScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container (
+      body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient (
-            colors: [Colors.green.shade700, Colors.green.shade400],
+          gradient: LinearGradient(
+            colors: [Color.fromRGBO(64, 107, 120, 1), Color.fromRGBO(29, 47, 56, 1)],
             begin: Alignment.topCenter,
-            end: Alignment.bottomCenter
-          )
+            end: Alignment.bottomCenter,
+          ),
         ),
-        child: Column (
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
@@ -23,7 +23,7 @@ class InitialScreen extends StatelessWidget {
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,
-                fontWeight: FontWeight.bold
+                fontWeight: FontWeight.bold,
               ),
             ),
             SizedBox(height: 20),
@@ -35,27 +35,29 @@ class InitialScreen extends StatelessWidget {
                 fontSize: 16,
               ),
             ),
+            SizedBox(height: 20), 
             ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)
-                  ),
-                  backgroundColor: Colors.orange
+              onPressed: () {
+                Navigator.pushNamed(context, "/home");
+              },
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
                 ),
-                child: const Text(
-                  "Begin new life",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16
-                  ),
-                )
-            )
+                backgroundColor: Colors.orange,
+              ),
+              child: const Text(
+                "Begin new life",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
-
 }

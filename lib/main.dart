@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'screens/init_screen.dart';
+import 'screens/HomeScreen.dart';
 
 void main() {
-
+  runApp(const KarmaApp());
 }
 
 class KarmaApp extends StatelessWidget {
@@ -15,11 +16,11 @@ class KarmaApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Karma",
       theme: ThemeData(
-        primarySwatch: Colors.green
+        primarySwatch: Colors.green,
       ),
+      routes: {
+        '/home': (context) => HomeScreen(),
+      },
     );
   }
-
-
-
 }
