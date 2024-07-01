@@ -84,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: OutlinedButton.styleFrom(
                       side: const BorderSide(color: Colors.orange),
                       backgroundColor: healthySelections[idx]
-                          ? Colors.green
+                          ? const Color.fromARGB(250, 158, 158, 158)
                           : Colors.transparent,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
@@ -277,6 +277,7 @@ class _HomeScreenState extends State<HomeScreen> {
           backgroundColor: const Color.fromRGBO(29, 47, 56, 1),
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
+              
               icon: Icon(Icons.add_chart),
               label: 'Statistic',
             ),
