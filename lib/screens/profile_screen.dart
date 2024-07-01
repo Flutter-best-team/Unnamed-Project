@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
 
-class Profile extends StatelessWidget {
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+class Profile extends StatefulWidget {
   const Profile({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile>{
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Settings",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        title: Text(
+          AppLocalizations.of(context)!.settings,
+          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
 
         ),
         backgroundColor: const Color.fromRGBO(64, 107, 120, 1),
@@ -28,13 +36,14 @@ class Profile extends StatelessWidget {
       bottomNavigationBar: const CustomBottomNavigationBar(),
     );
   }
+
 }
 
 class ProfileForm extends StatefulWidget {
   const ProfileForm({super.key});
 
   @override
-  _ProfileFormState createState() => _ProfileFormState();
+  State<StatefulWidget> createState() => _ProfileFormState();
 }
 
 class _ProfileFormState extends State<ProfileForm> {
