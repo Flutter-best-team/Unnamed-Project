@@ -23,11 +23,6 @@ View your life balance on the main dashboard to see how you're doing.
 ## View Reports:
 Access the Reports section to view detailed progress over time.
 
-## Screenshots:
-![Simulator Screenshot - iPhone 15 Pro Max - 2024-07-01 at 21 52 56](https://github.com/Flutter-best-team/unnamed_project/assets/81912882/1fcf5260-d496-43fa-b4da-e0945d311d19)
-![Simulator Screenshot - iPhone 15 Pro Max - 2024-07-01 at 21 52 48](https://github.com/Flutter-best-team/unnamed_project/assets/81912882/dac87da9-fb6d-4cbe-ba80-ae0f48163e3d)
-![Simulator Screenshot - iPhone 15 Pro Max - 2024-07-01 at 21 52 31](https://github.com/Flutter-best-team/unnamed_project/assets/81912882/eede09ec-a4f1-4ef3-bb97-4cf6b7243b21)
-
 
 ## Contact
 If you have any questions, issues, or suggestions, please feel free to contact us:

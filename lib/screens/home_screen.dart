@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
     } else if (index == 2) {
       Navigator.pushReplacementNamed(
           context,
-          '/settings');
+          '/profile');
     } else {
       setState(() {
         _selectedIndex = index;
@@ -178,7 +178,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Karma is a bitch",
+          "Karma",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: const Color.fromRGBO(64, 107, 120, 1),
@@ -259,25 +259,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(100),
-                ),
-                backgroundColor: const Color.fromRGBO(254, 243, 203, 1),
-              ),
-              child: const Text(
-                'Customize your character',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15,
-                ),
-              ),
-            ),
             const SizedBox(height: 20),
           ],
         ),

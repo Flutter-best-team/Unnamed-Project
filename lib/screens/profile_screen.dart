@@ -155,7 +155,10 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   final int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
-    if (index == 1) {
+    if (index == 0) {
+      Navigator.pushReplacementNamed(context, '/statistics');
+    }
+    else if (index == 1) {
       Navigator.pushReplacementNamed(context, '/home');
     } else if (index == 2) {
       Navigator.pushReplacementNamed(context, '/profile');
