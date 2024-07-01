@@ -48,7 +48,7 @@ class KarmaApp extends ConsumerWidget {
         '/home': (context) => const HomeScreen(),
         '/init' : (context) => const InitialScreen(),
         '/registration' : (context) => const RegistrationScreen(),
-        '/settings' : (context ) => const Profile(),
+        '/profile' : (context ) => const Profile(),
         '/statistics' : (context) => const StatisticsScreen()
       },
     );

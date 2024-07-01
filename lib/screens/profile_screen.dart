@@ -5,29 +5,27 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            "Settings",
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            
-          ),
-          backgroundColor: const Color.fromRGBO(64, 107, 120, 1),
-          centerTitle: true,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "Settings",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+
         ),
-        body: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Color.fromRGBO(64, 107, 120, 1), Color.fromRGBO(29, 47, 56, 1)],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-          ),
-          child: const ProfileForm(),
-        ),
-        bottomNavigationBar: const CustomBottomNavigationBar(),
+        backgroundColor: const Color.fromRGBO(64, 107, 120, 1),
+        centerTitle: true,
       ),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color.fromRGBO(64, 107, 120, 1), Color.fromRGBO(29, 47, 56, 1)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: const ProfileForm(),
+      ),
+      bottomNavigationBar: const CustomBottomNavigationBar(),
     );
   }
 }
@@ -51,7 +49,9 @@ class _ProfileFormState extends State<ProfileForm> {
             'Specify your gender',
             style: TextStyle(color: Colors.white),
           ),
+
           const SizedBox(height: 8),
+
           Container(
             decoration: BoxDecoration(
               color: const Color.fromRGBO(64, 107, 120, 1),
@@ -77,13 +77,21 @@ class _ProfileFormState extends State<ProfileForm> {
               }).toList(),
             ),
           ),
+
           const SizedBox(height: 16),
+
           buildTextField('Specify your height', '176'),
+
           const SizedBox(height: 16),
+
           buildTextField('Specify your weight', '34'),
+
           const SizedBox(height: 16),
+
           buildTextField('Specify your birhday', '21.02.1999'),
+
           const SizedBox(height: 32),
+
           Center(
             child: ElevatedButton(
               onPressed: () {},
@@ -96,7 +104,6 @@ class _ProfileFormState extends State<ProfileForm> {
                 textStyle: const TextStyle(color: Colors.white),
               ),
               child: const Text('Save changes'),
-              
             ),
           ),
         ],
@@ -145,12 +152,14 @@ class CustomBottomNavigationBar extends StatefulWidget {
 }
 
 class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
-  int _selectedIndex = 0;
+  final int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    if (index == 1) {
+      Navigator.pushReplacementNamed(context, '/home');
+    } else if (index == 2) {
+      Navigator.pushReplacementNamed(context, '/profile');
+    }
   }
 
   @override

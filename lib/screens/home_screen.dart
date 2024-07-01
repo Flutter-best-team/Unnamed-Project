@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
   
 
   @override
@@ -33,7 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
     } else if (index == 1) {
       _showAddItemModal(context);
     } else if (index == 2) {
-      Navigator.pushNamed(context, '/settings');
+      Navigator.pushReplacementNamed(
+          context,
+          '/settings');
     } else {
       setState(() {
         _selectedIndex = index;
