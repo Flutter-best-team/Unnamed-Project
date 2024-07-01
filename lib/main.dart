@@ -1,18 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:unnamed_project/l10n/l10n.dart';
 import 'screens/init_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/registration_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'notifier.dart';
+
 
 void main() {
-  runApp(const KarmaApp());
+  runApp(const ProviderScope(child: KarmaApp()));
 }
 
-class KarmaApp extends StatelessWidget {
+class KarmaApp extends ConsumerWidget {
   const KarmaApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
+      // Поддерживаемые локализации
+      supportedLocales: L10n.all,
+      locale: Locale(ref.watch(language)),
+      // Локализации
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate
+      ],
+
       initialRoute: '/init',
       debugShowCheckedModeBanner: false,
       title: "Karma",
