@@ -16,6 +16,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   void _onItemTapped(int index) {
     if (index == 1) {
       Navigator.pushReplacementNamed(context, '/home');
+    } else if (index == 2) {
+      Navigator.pushReplacementNamed(context, '/profile');
     }
   }
 

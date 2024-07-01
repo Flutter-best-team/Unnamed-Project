@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:unnamed_project/l10n/l10n.dart';
 
 
+import 'package:unnamed_project/screens/profile_screen.dart';
 import 'screens/init_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/registration_screen.dart';
@@ -47,6 +48,7 @@ class KarmaApp extends ConsumerWidget {
         '/home': (context) => const HomeScreen(),
         '/init' : (context) => const InitialScreen(),
         '/registration' : (context) => const RegistrationScreen(),
+        '/profile' : (context ) => const Profile(),
         '/statistics' : (context) => const StatisticsScreen()
       },
     );
