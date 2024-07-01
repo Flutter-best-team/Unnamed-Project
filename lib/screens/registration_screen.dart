@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
 
@@ -8,7 +10,6 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
-  String _selectedGender = 'Male';
   final TextEditingController _heightController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
   final TextEditingController _weightController = TextEditingController();
@@ -16,6 +17,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    String selectedGender = AppLocalizations.of(context)!.male;
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -32,20 +34,20 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 DropdownButtonFormField(
-                  value: _selectedGender,
-                  decoration: const InputDecoration(
-                    labelText: "Gender",
-                    labelStyle: TextStyle(
+                  value: selectedGender,
+                  decoration: InputDecoration(
+                    labelText: AppLocalizations.of(context)!.gender,
+                    labelStyle: const TextStyle(
                       color: Colors.orange,
                       fontSize: 20
                     ),
-                    enabledBorder: OutlineInputBorder(
+                    enabledBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(16.0)),
                       borderSide: BorderSide(
                         color: Colors.orange,
                       )
                     ),
-                    focusedBorder: OutlineInputBorder(
+                    focusedBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(16.0)),
                       borderSide: BorderSide(
                         color: Colors.orange
@@ -57,7 +59,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     color: Colors.orange,
                   ),
                   dropdownColor: const Color.fromRGBO(29, 47, 56, 1),
-                  items: ['Male', 'Female', 'Battle Helicopter'].map((String value) {
+                  items: <String>[AppLocalizations.of(context)!.male, AppLocalizations.of(context)!.female, AppLocalizations.of(context)!.battle_helicopter].map((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
                       child: Text(
@@ -70,7 +72,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   }).toList(),
                   onChanged: (newValue) {
                     setState(() {
-                      _selectedGender = newValue!;
+                      selectedGender = newValue!;
                     });
                   },
                 ),
@@ -79,25 +81,25 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
                 TextField(
                   controller: _ageController,
-                  decoration: const InputDecoration(
-                      labelText: 'Birthday',
-                      labelStyle: TextStyle(
+                  decoration: InputDecoration(
+                      labelText: AppLocalizations.of(context)!.birthday,
+                      labelStyle: const TextStyle(
                         color: Colors.orange,
                         fontSize: 20
                       ),
-                      enabledBorder: OutlineInputBorder(
+                      enabledBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(16.0)),
                           borderSide: BorderSide(
                             color: Colors.orange,
                           )
                       ),
-                      focusedBorder: OutlineInputBorder(
+                      focusedBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(16.0)),
                           borderSide: BorderSide(
                               color: Colors.orange
                           )
                       ),
-                      suffixIcon: Icon(
+                      suffixIcon: const Icon(
                         Icons.edit,
                         color: Colors.orange,
                       )
@@ -113,25 +115,25 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
                 TextField(
                   controller: _heightController,
-                  decoration: const InputDecoration(
-                    labelText: 'Height',
-                    labelStyle: TextStyle(
+                  decoration: InputDecoration(
+                    labelText: AppLocalizations.of(context)!.height,
+                    labelStyle: const TextStyle(
                         color: Colors.orange,
                         fontSize: 20
                     ),
-                    enabledBorder: OutlineInputBorder(
+                    enabledBorder: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(16.0)),
                         borderSide: BorderSide(
                           color: Colors.orange,
                         )
                     ),
-                    focusedBorder: OutlineInputBorder(
+                    focusedBorder: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(16.0)),
                         borderSide: BorderSide(
                             color: Colors.orange
                         )
                     ),
-                    suffixIcon: Icon(
+                    suffixIcon: const Icon(
                       Icons.edit,
                       color: Colors.orange,
                     )
@@ -146,25 +148,25 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
                 TextField(
                   controller: _weightController,
-                  decoration: const InputDecoration(
-                      labelText: 'Weight',
-                      labelStyle: TextStyle(
+                  decoration: InputDecoration(
+                      labelText: AppLocalizations.of(context)!.weight,
+                      labelStyle: const TextStyle(
                           color: Colors.orange,
                           fontSize: 20
                       ),
-                      enabledBorder: OutlineInputBorder(
+                      enabledBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(16.0)),
                           borderSide: BorderSide(
                             color: Colors.orange,
                           )
                       ),
-                      focusedBorder: OutlineInputBorder(
+                      focusedBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(16.0)),
                           borderSide: BorderSide(
                               color: Colors.orange
                           )
                       ),
-                      suffixIcon: Icon(
+                      suffixIcon: const Icon(
                         Icons.edit,
                         color: Colors.orange,
                       )
@@ -187,9 +189,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         borderRadius: BorderRadius.all(Radius.circular(10))
                       )
                     ),
-                    child: const Text(
-                      "Continue",
-                      style: TextStyle(
+                    child: Text(
+                      AppLocalizations.of(context)!.continue_button,
+                      style: const TextStyle(
                         color: Colors.orange,
                         fontSize: 20
                       ),
