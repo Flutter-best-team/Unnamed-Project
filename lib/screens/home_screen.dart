@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                     style: OutlinedButton.styleFrom(
                       side: const BorderSide(color: Colors.orange),
-                      backgroundColor: healthySelections[idx]
+                      backgroundColor: SharedPreferencesHelper.healthySelections[idx]
                           ? const Color.fromARGB(250, 158, 158, 158)
                           : Colors.transparent,
                       shape: RoundedRectangleBorder(
