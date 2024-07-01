@@ -1,3 +1,10 @@
 {
-    "init_screen_phrase":"With us you could not only track your habits, but live freely: without drinking or smoking!"
+    "init_screen_phrase":"With us you could not only track your habits, but live freely: without drinking or smoking!",
+    "init_screen_button":"Begin new life",
+    "welcome_to_karma":"Welcome to Karma",
+    "gender":"Gender",
+    "birthday":"Birthday",
+    "height":"Height",
+    "weight":"Weight",
+    "continue_button":"continue"
 }
