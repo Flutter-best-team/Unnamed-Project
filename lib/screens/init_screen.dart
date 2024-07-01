@@ -19,7 +19,7 @@ class InitialScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+             Text(
               AppLocalizations.of(context)!.welcome_to_karma,
               textAlign: TextAlign.center,
               style: const TextStyle(
