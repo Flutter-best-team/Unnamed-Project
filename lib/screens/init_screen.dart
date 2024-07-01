@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:unnamed_project/screens/home_screen.dart';
 
 class InitialScreen extends StatelessWidget {
   const InitialScreen({super.key});
@@ -41,7 +40,7 @@ class InitialScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushReplacementNamed(
                     context,
-                    '/home');
+                    '/registration');
               },
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
