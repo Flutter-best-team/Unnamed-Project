@@ -36,7 +36,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   decoration: const InputDecoration(
                     labelText: "Gender",
                     labelStyle: TextStyle(
-                      color: Colors.orange
+                      color: Colors.orange,
+                      fontSize: 20
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(16.0)),
@@ -51,7 +52,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       )
                     ),
                   ),
-                  icon: null,
+                  icon: const Icon(
+                    Icons.arrow_drop_down_outlined,
+                    color: Colors.orange,
+                  ),
                   dropdownColor: const Color.fromRGBO(29, 47, 56, 1),
                   items: ['Male', 'Female', 'Battle Helicopter'].map((String value) {
                     return DropdownMenuItem<String>(
@@ -78,7 +82,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   decoration: const InputDecoration(
                       labelText: 'Birthday',
                       labelStyle: TextStyle(
-                          color: Colors.orange
+                        color: Colors.orange,
+                        fontSize: 20
                       ),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(16.0)),
@@ -92,7 +97,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               color: Colors.orange
                           )
                       ),
-                      suffixIcon: Icon(Icons.edit)
+                      suffixIcon: Icon(
+                        Icons.edit,
+                        color: Colors.orange,
+                      )
                   ),
                   keyboardType: TextInputType.datetime,
                   style: const TextStyle(
@@ -108,7 +116,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   decoration: const InputDecoration(
                     labelText: 'Height',
                     labelStyle: TextStyle(
-                        color: Colors.orange
+                        color: Colors.orange,
+                        fontSize: 20
                     ),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(16.0)),
@@ -122,7 +131,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             color: Colors.orange
                         )
                     ),
-                    suffixIcon: Icon(Icons.edit)
+                    suffixIcon: Icon(
+                      Icons.edit,
+                      color: Colors.orange,
+                    )
                   ),
                   keyboardType: TextInputType.number,
                   style: const TextStyle(
@@ -137,7 +149,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   decoration: const InputDecoration(
                       labelText: 'Weight',
                       labelStyle: TextStyle(
-                          color: Colors.orange
+                          color: Colors.orange,
+                          fontSize: 20
                       ),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(16.0)),
@@ -151,7 +164,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               color: Colors.orange
                           )
                       ),
-                      suffixIcon: Icon(Icons.edit)
+                      suffixIcon: Icon(
+                        Icons.edit,
+                        color: Colors.orange,
+                      )
                   ),
                   keyboardType: TextInputType.number,
                   style: const TextStyle(
@@ -174,7 +190,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     child: const Text(
                       "Continue",
                       style: TextStyle(
-                        color: Colors.orange
+                        color: Colors.orange,
+                        fontSize: 20
                       ),
                     )
                 )
