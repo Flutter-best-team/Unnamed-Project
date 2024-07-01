@@ -13,6 +13,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final TextEditingController _heightController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
   final TextEditingController _weightController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
 
 
   @override
@@ -33,6 +34,39 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                TextField(
+                  controller: _nameController,
+                  decoration: InputDecoration(
+                      labelText: AppLocalizations.of(context)!.name,
+                      labelStyle: const TextStyle(
+                          color: Colors.orange,
+                          fontSize: 20
+                      ),
+                      enabledBorder: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(16.0)),
+                          borderSide: BorderSide(
+                            color: Colors.orange,
+                          )
+                      ),
+                      focusedBorder: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(16.0)),
+                          borderSide: BorderSide(
+                              color: Colors.orange
+                          )
+                      ),
+                      suffixIcon: const Icon(
+                        Icons.edit,
+                        color: Colors.orange,
+                      )
+                  ),
+                  keyboardType: TextInputType.text,
+                  style: const TextStyle(
+                      color: Colors.white
+                  ),
+                ),
+
+                const SizedBox(height: 16),
+
                 DropdownButtonFormField(
                   value: selectedGender,
                   decoration: InputDecoration(
@@ -108,7 +142,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   style: const TextStyle(
                       color: Colors.white
                   ),
-
                 ),
 
                 const SizedBox(height: 16),

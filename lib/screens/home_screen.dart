@@ -146,6 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: const Color.fromRGBO(64, 107, 120, 1),
+        centerTitle: true,
       ),
       body: Container(
         width: double.infinity,
