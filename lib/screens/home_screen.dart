@@ -10,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
   double currentProgress = 0.0;
   DateTime currentDate = DateTime.now();
 
@@ -63,10 +63,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _onItemTapped(int index) {
     if (index == 0) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const StatisticsScreen()),
-      );
+      Navigator.pushReplacementNamed(
+          context,
+          '/statistics');
     } else if (index == 1) {
       _showAddItemModal(context);
     } else {

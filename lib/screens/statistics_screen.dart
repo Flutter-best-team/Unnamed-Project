@@ -6,10 +6,19 @@ class StatisticsScreen extends StatefulWidget {
   const StatisticsScreen({super.key});
 
   @override
-  _StatisticsScreenState createState() => _StatisticsScreenState();
+  State<StatefulWidget> createState() => _StatisticsScreenState();
 }
 
 class _StatisticsScreenState extends State<StatisticsScreen> {
+
+  final int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    if (index == 1) {
+      Navigator.pushReplacementNamed(context, '/home');
+    }
+  }
+
   String _selectedPeriod = 'day';
   Map<String, int> healthyCounts = {
     'sport': 0,
@@ -92,25 +101,36 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromRGBO(29, 47, 56, 1),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart),
-            label: 'Статистика',
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          border: Border(
+            top: BorderSide(
+              color: Colors.orange,
+              width: 2.0,
+            ),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Домой',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Настройки',
-          ),
-        ],
-        currentIndex: 0,
-        selectedItemColor: Colors.orange,
-        unselectedItemColor: Colors.grey,
+        ),
+        child: BottomNavigationBar(
+          backgroundColor: const Color.fromRGBO(29, 47, 56, 1),
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.add_chart),
+              label: 'Statistic',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Profile',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: const Color.fromRGBO(250, 121, 13, 1),
+          unselectedItemColor: Colors.grey,
+          onTap: _onItemTapped,
+        ),
       ),
     );
   }
