@@ -19,8 +19,8 @@ class InitialScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              "Welcome to Karma!",
+             Text(
+              AppLocalizations.of(context)!.welcome_to_karma,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
@@ -51,8 +51,8 @@ class InitialScreen extends StatelessWidget {
                 ),
                 backgroundColor: Colors.orange,
               ),
-              child: const Text(
-                "Begin new life",
+              child: Text(
+                AppLocalizations.of(context)!.init_screen_button,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 16,

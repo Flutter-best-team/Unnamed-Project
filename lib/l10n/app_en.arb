@@ -6,5 +6,13 @@
     "birthday":"Birthday",
     "height":"Height",
     "weight":"Weight",
-    "continue_button":"continue"
+    "continue_button":"continue",
+    "gym":"workout in gym",
+    "water":"Drink 2 liter of water",
+    "sleep":"Sleep for 8 hours",
+    "walk":"Walk",
+    "eat":"Eat vegetables",
+    "smoke":"Smoke sigaretts",
+    "alcogol":"Alcogol consumption",
+    "fastfood":"Fastfood"
 }
