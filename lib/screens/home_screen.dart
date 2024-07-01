@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'statistics_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -8,8 +10,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
-  double currentProgress = 0.7;
+  int _selectedIndex = 1;
+  double currentProgress = 0.0;
+  DateTime currentDate = DateTime.now();
 
   final List<String> healthyItems = [
     'Поход в спортзал',
@@ -28,8 +31,42 @@ class _HomeScreenState extends State<HomeScreen> {
   List<bool> healthySelections = [false, false, false, false, false];
   List<bool> unhealthySelections = [false, false, false];
 
+  @override
+  void initState() {
+    super.initState();
+    _loadProgress();
+  }
+
+  Future<void> _loadProgress() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      currentProgress = prefs.getDouble('currentProgress') ?? 0.0;
+      currentDate = DateTime.tryParse(prefs.getString('currentDate') ?? '') ?? DateTime.now();
+      
+      if (currentDate.day != DateTime.now().day) {
+        currentProgress = 0.0;
+        prefs.setDouble('currentProgress', 0.0);
+        prefs.setString('currentDate', DateTime.now().toIso8601String());
+      }
+    });
+  }
+
+  Future<void> _updateProgress(double value) async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      currentProgress += value;
+      if (currentProgress < -1) currentProgress = -1;
+      if (currentProgress > 1) currentProgress = 1;
+      prefs.setDouble('currentProgress', currentProgress);
+    });
+  }
+
   void _onItemTapped(int index) {
-    if (index == 1) {
+    if (index == 0) {
+      Navigator.pushReplacementNamed(
+          context,
+          '/statistics');
+    } else if (index == 1) {
       _showAddItemModal(context);
     } else {
       setState(() {
@@ -79,6 +116,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: () {
                       setState(() {
                         healthySelections[idx] = !healthySelections[idx];
+                        if (healthySelections[idx]) {
+                          _updateProgress(0.2);
+                          _updateStatistics(item, 1);
+                        } else {
+                          _updateProgress(-0.2);
+                          _updateStatistics(item, -1);
+                        }
                       });
                     },
                     style: OutlinedButton.styleFrom(
@@ -123,8 +167,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   trailing: OutlinedButton(
                     onPressed: () {
                       setState(() {
-                        unhealthySelections[idx] =
-                            !unhealthySelections[idx];
+                        unhealthySelections[idx] = !unhealthySelections[idx];
+                        if (unhealthySelections[idx]) {
+                          _updateProgress(-0.2);
+                          _updateStatistics(item, 1);
+                        } else {
+                          _updateProgress(0.2);
+                          _updateStatistics(item, -1);
+                        }
                       });
                     },
                     style: OutlinedButton.styleFrom(
@@ -153,6 +203,19 @@ class _HomeScreenState extends State<HomeScreen> {
         );
       },
     );
+  }
+
+  Future<void> _updateStatistics(String item, int value) async {
+    final prefs = await SharedPreferences.getInstance();
+    if (healthyItems.contains(item)) {
+      String key = healthyItems.indexOf(item).toString();
+      int currentCount = prefs.getInt(key) ?? 0;
+      prefs.setInt(key, currentCount + value);
+    } else if (unhealthyItems.contains(item)) {
+      String key = (unhealthyItems.indexOf(item) + healthyItems.length).toString();
+      int currentCount = prefs.getInt(key) ?? 0;
+      prefs.setInt(key, currentCount + value);
+    }
   }
 
   @override
@@ -201,7 +264,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           FractionallySizedBox(
-                            widthFactor: currentProgress,
+                            widthFactor: (currentProgress + 1) / 2,
                             child: Container(
                               decoration: const BoxDecoration(
                                 gradient: LinearGradient(
@@ -222,7 +285,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    '${(currentProgress * 100).toStringAsFixed(0)}%',
+                    '${((currentProgress + 1) * 50).toStringAsFixed(0)}%',
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
