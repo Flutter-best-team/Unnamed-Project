@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class InitialScreen extends StatelessWidget {
   const InitialScreen({super.key});
 
@@ -27,8 +29,8 @@ class InitialScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            const Text(
-              "With us you could not only track your habits, but live freely: without drinking or smoking!",
+            Text(
+              AppLocalizations.of(context)!.init_screen_phrase,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
