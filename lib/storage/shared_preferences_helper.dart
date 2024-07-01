@@ -20,6 +20,7 @@ class SharedPreferencesHelper {
 
   static List<bool> healthySelections = [false, false, false, false, false];
   static List<bool> unhealthySelections = [false, false, false];
+  
 
   static Future<void> loadProgress(Function setState) async {
     final prefs = await SharedPreferences.getInstance();
@@ -58,4 +59,6 @@ class SharedPreferencesHelper {
       prefs.setInt(key, currentCount + value);
     }
   }
+
+ 
 }
