@@ -1,3 +1,23 @@
 {
-    "init_screen_phrase":"With us you could not only track your habits, but live freely: without drinking or smoking!"
+    "init_screen_phrase":"With us you could not only track your habits, but live freely: without drinking or smoking!",
+    "init_screen_button":"Begin new life",
+    "welcome_to_karma":"Welcome to Karma",
+    "gender":"Gender",
+    "birthday":"Birthday",
+    "male":"Male",
+    "female":"Female",
+    "battle_helicopter":"Battle helicopter",
+    "height":"Height",
+    "weight":"Weight",
+    "continue_button":"continue",
+    
+    
+    "gym":"workout in gym",
+    "water":"Drink 2 liter of water",
+    "sleep":"Sleep for 8 hours",
+    "walk":"Walk",
+    "eat":"Eat vegetables",
+    "smoke":"Smoke sigaretts",
+    "alcogol":"Alcogol consumption",
+    "fastfood":"Fastfood"
 }

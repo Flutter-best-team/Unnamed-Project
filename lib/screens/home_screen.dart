@@ -1,35 +1,36 @@
 import 'package:flutter/material.dart';
+import 'statistics_screen.dart';
+import 'package:unnamed_project/storage/shared_preferences_helper.dart';
+
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  
   int _selectedIndex = 0;
-  double currentProgress = 0.7;
+  
 
-  final List<String> healthyItems = [
-    'Поход в спортзал',
-    'Выпил 2 л воды',
-    'Сон более 8 часов',
-    'Прогулка на свежем воздухе',
-    'Скушал фрукты/овощи',
-  ];
+  @override
+  void initState() {
+    super.initState();
+    SharedPreferencesHelper.loadProgress(setState);
+  }
 
-  final List<String> unhealthyItems = [
-    'Курение сигарет',
-    'Употребление алкоголя',
-    'Фастфуд',
-  ];
-
-  List<bool> healthySelections = [false, false, false, false, false];
-  List<bool> unhealthySelections = [false, false, false];
+  void _updateProgress(double value) {
+    SharedPreferencesHelper.updateProgress(setState, value);
+  }
 
   void _onItemTapped(int index) {
-    if (index == 1) {
+    if (index == 0) {
+      Navigator.pushReplacementNamed(
+          context,
+          '/statistics');
+    } else if (index == 1) {
       _showAddItemModal(context);
     } else if (index == 2) {
       Navigator.pushNamed(context, '/settings');
@@ -39,7 +40,6 @@ class _HomeScreenState extends State<HomeScreen> {
       });
     }
   }
-
   void _showAddItemModal(BuildContext context) {
     showModalBottomSheet(
       backgroundColor: const Color.fromRGBO(29, 47, 56, 1),
@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const Divider(color: Colors.orange),
-              ...healthyItems.asMap().entries.map((entry) {
+              ...SharedPreferencesHelper.healthyItems.asMap().entries.map((entry) {
                 int idx = entry.key;
                 String item = entry.value;
                 return ListTile(
@@ -80,12 +80,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   trailing: OutlinedButton(
                     onPressed: () {
                       setState(() {
-                        healthySelections[idx] = !healthySelections[idx];
+                        SharedPreferencesHelper.healthySelections[idx] = !SharedPreferencesHelper.healthySelections[idx];
+                        if (SharedPreferencesHelper.healthySelections[idx]) {
+                          _updateProgress(0.2);
+                          SharedPreferencesHelper.updateStatistics(item, 1);
+                        } else {
+                          _updateProgress(-0.2);
+                          SharedPreferencesHelper.updateStatistics(item, -1);
+                        }
                       });
                     },
                     style: OutlinedButton.styleFrom(
                       side: const BorderSide(color: Colors.orange),
-                      backgroundColor: healthySelections[idx]
+                      backgroundColor: SharedPreferencesHelper.healthySelections[idx]
                           ? const Color.fromARGB(250, 158, 158, 158)
                           : Colors.transparent,
                       shape: RoundedRectangleBorder(
@@ -95,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           horizontal: 12, vertical: 8),
                     ),
                     child: Text(
-                      healthySelections[idx] ? '-' : '+',
+                      SharedPreferencesHelper.healthySelections[idx] ? '-' : '+',
                       style: const TextStyle(
                         color: Colors.orange,
                         fontSize: 20,
@@ -114,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const Divider(color: Colors.orange),
-              ...unhealthyItems.asMap().entries.map((entry) {
+              ...SharedPreferencesHelper.unhealthyItems.asMap().entries.map((entry) {
                 int idx = entry.key;
                 String item = entry.value;
                 return ListTile(
@@ -125,13 +132,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   trailing: OutlinedButton(
                     onPressed: () {
                       setState(() {
-                        unhealthySelections[idx] =
-                            !unhealthySelections[idx];
+                        SharedPreferencesHelper.unhealthySelections[idx] = !SharedPreferencesHelper.unhealthySelections[idx];
+                        if (SharedPreferencesHelper.unhealthySelections[idx]) {
+                          _updateProgress(-0.2);
+                          SharedPreferencesHelper.updateStatistics(item, 1);
+                        } else {
+                          _updateProgress(0.2);
+                          SharedPreferencesHelper.updateStatistics(item, -1);
+                        }
                       });
                     },
                     style: OutlinedButton.styleFrom(
                       side: const BorderSide(color: Colors.orange),
-                      backgroundColor: unhealthySelections[idx]
+                      backgroundColor: SharedPreferencesHelper.unhealthySelections[idx]
                           ? Colors.grey
                           : Colors.transparent,
                       shape: RoundedRectangleBorder(
@@ -141,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           horizontal: 12, vertical: 8),
                     ),
                     child: Text(
-                      unhealthySelections[idx] ? '-' : '+',
+                      SharedPreferencesHelper.unhealthySelections[idx] ? '-' : '+',
                       style: const TextStyle(
                         color: Colors.orange,
                         fontSize: 20,
@@ -156,6 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
       },
     );
   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -203,7 +217,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           FractionallySizedBox(
-                            widthFactor: currentProgress,
+                            widthFactor: (SharedPreferencesHelper.currentProgress + 1) / 2,
                             child: Container(
                               decoration: const BoxDecoration(
                                 gradient: LinearGradient(
@@ -224,7 +238,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    '${(currentProgress * 100).toStringAsFixed(0)}%',
+                    '${((SharedPreferencesHelper.currentProgress + 1) * 50).toStringAsFixed(0)}%',
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,

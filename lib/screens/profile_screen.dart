@@ -11,21 +11,35 @@ class Profile extends StatelessWidget {
           title: const Text(
             "Settings",
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            
           ),
-          centerTitle: true,
           backgroundColor: const Color.fromRGBO(64, 107, 120, 1),
+          centerTitle: true,
         ),
-        body: const ProfileForm(),
-
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color.fromRGBO(64, 107, 120, 1), Color.fromRGBO(29, 47, 56, 1)],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
+          child: const ProfileForm(),
+        ),
+        bottomNavigationBar: const CustomBottomNavigationBar(),
       ),
     );
   }
 }
 
-class ProfileForm extends StatelessWidget{
-   const ProfileForm({super.key});
+class ProfileForm extends StatefulWidget {
+  const ProfileForm({super.key});
 
-  
+  @override
+  _ProfileFormState createState() => _ProfileFormState();
+}
+
+class _ProfileFormState extends State<ProfileForm> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -34,20 +48,20 @@ class ProfileForm extends StatelessWidget{
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           const Text(
-            'Укажите ваш пол',
+            'Specify your gender',
             style: TextStyle(color: Colors.white),
           ),
           const SizedBox(height: 8),
           Container(
             decoration: BoxDecoration(
-              color: Colors.green.shade700,
+              color: const Color.fromRGBO(64, 107, 120, 1),
               borderRadius: BorderRadius.circular(10),
               border: Border.all(color: Colors.grey),
             ),
             child: DropdownButtonFormField<String>(
-              value: 'Gender',
+              value: 'Male',
               icon: const Icon(Icons.arrow_downward, color: Colors.white),
-              dropdownColor: Colors.green.shade700,
+              dropdownColor: const Color.fromRGBO(64, 107, 120, 1),
               style: const TextStyle(color: Colors.white),
               decoration: const InputDecoration(
                 border: InputBorder.none,
@@ -66,9 +80,9 @@ class ProfileForm extends StatelessWidget{
           const SizedBox(height: 16),
           buildTextField('Specify your height', '176'),
           const SizedBox(height: 16),
-          buildTextField('Specify your height', '34'),
+          buildTextField('Specify your weight', '34'),
           const SizedBox(height: 16),
-          buildTextField('Specify your height', '56'),
+          buildTextField('Specify your birhday', '21.02.1999'),
           const SizedBox(height: 32),
           Center(
             child: ElevatedButton(
@@ -79,8 +93,10 @@ class ProfileForm extends StatelessWidget{
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
+                textStyle: const TextStyle(color: Colors.white),
               ),
               child: const Text('Save changes'),
+              
             ),
           ),
         ],
@@ -99,7 +115,7 @@ class ProfileForm extends StatelessWidget{
         const SizedBox(height: 8),
         Container(
           decoration: BoxDecoration(
-            color: Colors.green.shade700,
+            color: const Color.fromRGBO(64, 107, 120, 1),
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: Colors.grey),
           ),
@@ -118,5 +134,47 @@ class ProfileForm extends StatelessWidget{
       ],
     );
   }
+}
 
+class CustomBottomNavigationBar extends StatefulWidget {
+  const CustomBottomNavigationBar({super.key});
+
+  @override
+  _CustomBottomNavigationBarState createState() =>
+      _CustomBottomNavigationBarState();
+}
+
+class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      backgroundColor: const Color.fromRGBO(29, 47, 56, 1),
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.add_chart),
+          label: 'Statistic',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: 'Profile',
+        ),
+      ],
+      currentIndex: _selectedIndex,
+      selectedItemColor: const Color.fromRGBO(250, 121, 13, 1),
+      unselectedItemColor: Colors.grey,
+      onTap: _onItemTapped,
+    );
+  }
 }
