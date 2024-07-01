@@ -13,7 +13,7 @@ class ProfileStorage {
   ];
 
 
-  static Future<void> toRegistrete(List<String> profileInfo) async{
+  static Future<void> toRegistrete() async{
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool(regKey, true);
   }

@@ -21,5 +21,8 @@
     "home_fruits_option":"Поел фрукты/овощи",
     "home_smoking_option":"Курение сигарет",
     "home_drinking_option":"Употребление алкоголя",
-    "home_fastfood_option":"Употребление фастфуда"
+    "home_fastfood_option":"Употребление фастфуда",
+
+    "incomplited_profile":"Незаконченный профиль",
+    "incomplited_profile_messege":"Вы не до конца заполнили данные профиля. Заполните все поля данных и вы сможете продолжить."
 }
