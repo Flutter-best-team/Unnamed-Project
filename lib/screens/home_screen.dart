@@ -31,6 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void _onItemTapped(int index) {
     if (index == 1) {
       _showAddItemModal(context);
+    } else if (index == 2) {
+      Navigator.pushNamed(context, '/settings');
     } else {
       setState(() {
         _selectedIndex = index;

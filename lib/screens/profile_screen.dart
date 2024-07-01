@@ -64,11 +64,11 @@ class ProfileForm extends StatelessWidget{
             ),
           ),
           const SizedBox(height: 16),
-          buildTextField('Укажите ваш рост', '176'),
+          buildTextField('Specify your height', '176'),
           const SizedBox(height: 16),
-          buildTextField('Укажите ваш возраст', '34'),
+          buildTextField('Specify your height', '34'),
           const SizedBox(height: 16),
-          buildTextField('Укажите ваш вес', '56'),
+          buildTextField('Specify your height', '56'),
           const SizedBox(height: 32),
           Center(
             child: ElevatedButton(
@@ -80,7 +80,7 @@ class ProfileForm extends StatelessWidget{
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),
-              child: const Text('Сохранить изменения'),
+              child: const Text('Save changes'),
             ),
           ),
         ],
