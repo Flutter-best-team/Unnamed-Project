@@ -1,5 +1,12 @@
 {
     "profile":"Profile",
+    "settings":"Settings",
+    "language":"Language",
+    "delete_all_saves":"Delete all saves",
+    "yes":"Yes",
+    "no":"No",
+    "delete_all_saves_title":"Are you sure?",
+    "delete_all_saves_content":"This action will take you to registration screen",
 
     "init_screen_phrase":"With us you could not only track your habits, but live freely: without drinking or smoking!",
     "init_screen_button":"Begin new life",
