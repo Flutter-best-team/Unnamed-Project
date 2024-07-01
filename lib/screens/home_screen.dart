@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'statistics_screen.dart';
 import 'package:unnamed_project/storage/shared_preferences_helper.dart';
 
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -11,9 +10,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  
   int _selectedIndex = 1;
-  
 
   @override
   void initState() {
@@ -27,63 +24,62 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _onItemTapped(int index) {
     if (index == 0) {
-      Navigator.pushReplacementNamed(
-          context,
-          '/statistics');
+      Navigator.pushReplacementNamed(context, '/statistics');
     } else if (index == 1) {
       _showAddItemModal(context);
     } else if (index == 2) {
-      Navigator.pushReplacementNamed(
-          context,
-          '/profile');
+      Navigator.pushReplacementNamed(context, '/profile');
     } else {
       setState(() {
         _selectedIndex = index;
       });
     }
   }
+
   void _showAddItemModal(BuildContext context) {
-    showModalBottomSheet(
-      backgroundColor: const Color.fromRGBO(29, 47, 56, 1),
-      context: context,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
-      ),
-      isScrollControlled: true,
-      builder: (BuildContext context) {
-        return Padding(
-          padding: EdgeInsets.only(
-            left: 20,
-            right: 20,
-            top: 20,
-            bottom: MediaQuery.of(context).viewInsets.bottom + 20,
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Полезные действия',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              const Divider(color: Colors.orange),
-              ...SharedPreferencesHelper.healthyItems.asMap().entries.map((entry) {
-                int idx = entry.key;
-                String item = entry.value;
-                return ListTile(
-                  title: Text(
-                    item,
-                    style: const TextStyle(color: Colors.white),
+  showModalBottomSheet(
+    backgroundColor: const Color.fromRGBO(29, 47, 56, 1),
+    context: context,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
+    ),
+    isScrollControlled: true,
+    builder: (BuildContext context) {
+      return StatefulBuilder(
+        builder: (BuildContext context, StateSetter setState) {
+          return Padding(
+            padding: EdgeInsets.only(
+              left: 20,
+              right: 20,
+              top: 20,
+              bottom: MediaQuery.of(context).viewInsets.bottom + 20,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Полезные действия',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
-                  trailing: OutlinedButton(
-                    onPressed: () {
+                ),
+                const Divider(color: Colors.orange),
+                ...SharedPreferencesHelper.healthyItems.asMap().entries.map((entry) {
+                  int idx = entry.key;
+                  String item = entry.value;
+                  return CheckboxListTile(
+                    title: Text(
+                      item,
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    value: SharedPreferencesHelper.healthySelections[idx],
+                    onChanged: (bool? value) {
                       setState(() {
-                        SharedPreferencesHelper.healthySelections[idx] = !SharedPreferencesHelper.healthySelections[idx];
-                        if (SharedPreferencesHelper.healthySelections[idx]) {
+                        SharedPreferencesHelper.healthySelections[idx] = value!;
+                        if (value) {
                           _updateProgress(0.2);
                           SharedPreferencesHelper.updateStatistics(item, 1);
                         } else {
@@ -92,50 +88,33 @@ class _HomeScreenState extends State<HomeScreen> {
                         }
                       });
                     },
-                    style: OutlinedButton.styleFrom(
-                      side: const BorderSide(color: Colors.orange),
-                      backgroundColor: SharedPreferencesHelper.healthySelections[idx]
-                          ? const Color.fromARGB(250, 158, 158, 158)
-                          : Colors.transparent,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 8),
-                    ),
-                    child: Text(
-                      SharedPreferencesHelper.healthySelections[idx] ? '-' : '+',
-                      style: const TextStyle(
-                        color: Colors.orange,
-                        fontSize: 20,
-                      ),
-                    ),
+                    checkColor: Colors.white,
+                    activeColor: Colors.orange,
+                  );
+                }).toList(),
+                const SizedBox(height: 10),
+                const Text(
+                  'Вредные действия',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
-                );
-              }).toList(),
-              const SizedBox(height: 10),
-              const Text(
-                'Вредные действия',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
                 ),
-              ),
-              const Divider(color: Colors.orange),
-              ...SharedPreferencesHelper.unhealthyItems.asMap().entries.map((entry) {
-                int idx = entry.key;
-                String item = entry.value;
-                return ListTile(
-                  title: Text(
-                    item,
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                  trailing: OutlinedButton(
-                    onPressed: () {
+                const Divider(color: Colors.orange),
+                ...SharedPreferencesHelper.unhealthyItems.asMap().entries.map((entry) {
+                  int idx = entry.key;
+                  String item = entry.value;
+                  return CheckboxListTile(
+                    title: Text(
+                      item,
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    value: SharedPreferencesHelper.unhealthySelections[idx],
+                    onChanged: (bool? value) {
                       setState(() {
-                        SharedPreferencesHelper.unhealthySelections[idx] = !SharedPreferencesHelper.unhealthySelections[idx];
-                        if (SharedPreferencesHelper.unhealthySelections[idx]) {
+                        SharedPreferencesHelper.unhealthySelections[idx] = value!;
+                        if (value) {
                           _updateProgress(-0.2);
                           SharedPreferencesHelper.updateStatistics(item, 1);
                         } else {
@@ -144,34 +123,19 @@ class _HomeScreenState extends State<HomeScreen> {
                         }
                       });
                     },
-                    style: OutlinedButton.styleFrom(
-                      side: const BorderSide(color: Colors.orange),
-                      backgroundColor: SharedPreferencesHelper.unhealthySelections[idx]
-                          ? Colors.grey
-                          : Colors.transparent,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 8),
-                    ),
-                    child: Text(
-                      SharedPreferencesHelper.unhealthySelections[idx] ? '-' : '+',
-                      style: const TextStyle(
-                        color: Colors.orange,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                );
-              }).toList(),
-            ],
-          ),
-        );
-      },
-    );
-  }
-  
+                    checkColor: Colors.white,
+                    activeColor: Colors.orange,
+                  );
+                }).toList(),
+              ],
+            ),
+          );
+        },
+      );
+    },
+  );
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -276,7 +240,6 @@ class _HomeScreenState extends State<HomeScreen> {
           backgroundColor: const Color.fromRGBO(29, 47, 56, 1),
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              
               icon: Icon(Icons.add_chart),
               label: 'Statistic',
             ),
