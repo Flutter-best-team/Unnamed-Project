@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'statistics_screen.dart';
 import 'package:unnamed_project/storage/shared_preferences_helper.dart';
 
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -10,6 +11,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  
   int _selectedIndex = 0;
   
 
@@ -25,10 +27,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _onItemTapped(int index) {
     if (index == 0) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const StatisticsScreen()),
-      );
+      Navigator.pushReplacementNamed(
+          context,
+          '/statistics');
     } else if (index == 1) {
       _showAddItemModal(context);
     } else {

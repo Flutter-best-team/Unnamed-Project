@@ -22,7 +22,7 @@ class InitialScreen extends StatelessWidget {
              Text(
               AppLocalizations.of(context)!.welcome_to_karma,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -32,7 +32,7 @@ class InitialScreen extends StatelessWidget {
             Text(
               AppLocalizations.of(context)!.init_screen_phrase,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 16,
               ),
@@ -53,7 +53,7 @@ class InitialScreen extends StatelessWidget {
               ),
               child: Text(
                 AppLocalizations.of(context)!.init_screen_button,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,
                 ),

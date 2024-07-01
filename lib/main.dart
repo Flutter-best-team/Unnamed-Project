@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:unnamed_project/l10n/l10n.dart';
+
+
 import 'screens/init_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/registration_screen.dart';
+import 'screens/statistics_screen.dart';
+
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -41,7 +46,8 @@ class KarmaApp extends ConsumerWidget {
       routes: {
         '/home': (context) => const HomeScreen(),
         '/init' : (context) => const InitialScreen(),
-        '/registration' : (context) => const RegistrationScreen()
+        '/registration' : (context) => const RegistrationScreen(),
+        '/statistics' : (context) => const StatisticsScreen()
       },
     );
   }

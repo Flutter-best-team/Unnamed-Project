@@ -4,9 +4,14 @@
     "welcome_to_karma":"Welcome to Karma",
     "gender":"Gender",
     "birthday":"Birthday",
+    "male":"Male",
+    "female":"Female",
+    "battle_helicopter":"Battle helicopter",
     "height":"Height",
     "weight":"Weight",
     "continue_button":"continue",
+    
+    
     "gym":"workout in gym",
     "water":"Drink 2 liter of water",
     "sleep":"Sleep for 8 hours",
