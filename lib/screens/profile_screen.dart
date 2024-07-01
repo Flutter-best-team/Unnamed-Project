@@ -16,12 +16,25 @@ class _ProfileState extends State<Profile>{
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppLocalizations.of(context)!.settings,
+          AppLocalizations.of(context)!.profile,
           style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-
         ),
         backgroundColor: const Color.fromRGBO(64, 107, 120, 1),
         centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(
+                    context,
+                    '/profile/settings'
+                );
+              },
+              icon: const Icon(
+                Icons.settings,
+                color: Colors.white,
+              )
+          )
+        ],
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -49,6 +62,7 @@ class ProfileForm extends StatefulWidget {
 class _ProfileFormState extends State<ProfileForm> {
   @override
   Widget build(BuildContext context) {
+    String selectedGender = AppLocalizations.of(context)!.male;
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -68,7 +82,7 @@ class _ProfileFormState extends State<ProfileForm> {
               border: Border.all(color: Colors.grey),
             ),
             child: DropdownButtonFormField<String>(
-              value: 'Male',
+              value: selectedGender,
               icon: const Icon(Icons.arrow_downward, color: Colors.white),
               dropdownColor: const Color.fromRGBO(64, 107, 120, 1),
               style: const TextStyle(color: Colors.white),
@@ -77,11 +91,15 @@ class _ProfileFormState extends State<ProfileForm> {
                 contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
               ),
               onChanged: (String? newValue) {},
-              items: <String>['Male', 'Female', 'Battle Helicopter']
-                  .map<DropdownMenuItem<String>>((String value) {
+              items: <String>[AppLocalizations.of(context)!.male, AppLocalizations.of(context)!.female, AppLocalizations.of(context)!.battle_helicopter].map((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
-                  child: Text(value),
+                  child: Text(
+                    value,
+                    style: const TextStyle(
+                        color: Colors.white
+                    ),
+                  ),
                 );
               }).toList(),
             ),
@@ -112,7 +130,12 @@ class _ProfileFormState extends State<ProfileForm> {
                 ),
                 textStyle: const TextStyle(color: Colors.white),
               ),
-              child: const Text('Save changes'),
+              child: const Text(
+                'Save changes',
+                style: TextStyle(
+                  color: Colors.white
+                ),
+              ),
             ),
           ),
         ],
