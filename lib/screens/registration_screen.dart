@@ -10,7 +10,6 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
-  String _selectedGender = 'Male';
   final TextEditingController _heightController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
   final TextEditingController _weightController = TextEditingController();
@@ -18,6 +17,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    String selectedGender = AppLocalizations.of(context)!.male;
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -34,7 +34,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 DropdownButtonFormField(
-                  value: _selectedGender,
+                  value: selectedGender,
                   decoration: InputDecoration(
                     labelText: AppLocalizations.of(context)!.gender,
                     labelStyle: const TextStyle(
@@ -59,7 +59,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     color: Colors.orange,
                   ),
                   dropdownColor: const Color.fromRGBO(29, 47, 56, 1),
-                  items: ['Male', 'Female', 'Battle Helicopter'].map((String value) {
+                  items: <String>[AppLocalizations.of(context)!.male, AppLocalizations.of(context)!.female, AppLocalizations.of(context)!.battle_helicopter].map((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
                       child: Text(
@@ -72,7 +72,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   }).toList(),
                   onChanged: (newValue) {
                     setState(() {
-                      _selectedGender = newValue!;
+                      selectedGender = newValue!;
                     });
                   },
                 ),
