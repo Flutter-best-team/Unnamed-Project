@@ -4,6 +4,8 @@ class ProfileStorage {
 
   static final String regKey = "registered";
 
+  static final String langKey = "language";
+
   static final List<String> profileInfoItems = [
     'name',
     'gender',
