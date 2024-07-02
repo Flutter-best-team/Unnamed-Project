@@ -1,9 +1,17 @@
 {
+    "profile":"Профиль",
     "settings":"Настройки",
+    "language":"Язык",
+    "delete_all_saves":"Удалить все данные",
+    "yes":"Да",
+    "no":"Нет",
+    "delete_all_saves_title":"Вы уверены?",
+    "delete_all_saves_content":"Это действие перенесёт вас на экран регистрации",
 
     "init_screen_phrase":"С нами вы сможете не только отслеживать свои привычки, но и жить свободно: не пить и не курить!",
     "init_screen_button":"Начать новую жизнь",
     "welcome_to_karma":"Добро пожаловать в Karma",
+    "name":"Имя",
     "gender":"Пол",
     "birthday":"День рождения",
     "male":"Мужской",
@@ -12,7 +20,6 @@
     "height":"Рост",
     "weight":"Вес",
     "continue_button":"Продолжить",
-
     "home_gym_option":"Поход в спортзал",
     "home_hydration_option":"Выпил 2л воды",
     "home_sleep_option":"Сон более 8 часов",
@@ -20,5 +27,8 @@
     "home_fruits_option":"Поел фрукты/овощи",
     "home_smoking_option":"Курение сигарет",
     "home_drinking_option":"Употребление алкоголя",
-    "home_fastfood_option":"Употребление фастфуда"
+    "home_fastfood_option":"Употребление фастфуда",
+
+    "incomplited_profile":"Незаконченный профиль",
+    "incomplited_profile_messege":"Вы не до конца заполнили данные профиля. Заполните все поля данных и вы сможете продолжить."
 }

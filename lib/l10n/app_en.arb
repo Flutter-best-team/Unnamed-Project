@@ -1,9 +1,17 @@
 {
+    "profile":"Profile",
     "settings":"Settings",
+    "language":"Language",
+    "delete_all_saves":"Delete all saves",
+    "yes":"Yes",
+    "no":"No",
+    "delete_all_saves_title":"Are you sure?",
+    "delete_all_saves_content":"This action will take you to registration screen",
 
     "init_screen_phrase":"With us you could not only track your habits, but live freely: without drinking or smoking!",
     "init_screen_button":"Begin new life",
     "welcome_to_karma":"Welcome to Karma",
+    "name":"Name",
     "gender":"Gender",
     "birthday":"Birthday",
     "male":"Male",
@@ -11,15 +19,17 @@
     "battle_helicopter":"Battle helicopter",
     "height":"Height",
     "weight":"Weight",
-    "continue_button":"continue",
-    
-    
-    "gym":"workout in gym",
-    "water":"Drink 2 liter of water",
-    "sleep":"Sleep for 8 hours",
-    "walk":"Walk",
-    "eat":"Eat vegetables",
-    "smoke":"Smoke sigaretts",
-    "alcogol":"Alcogol consumption",
-    "fastfood":"Fastfood"
+    "continue_button":"Continue",
+
+    "home_gym_option":"Workout in gym",
+    "home_hydration_option":"Drink 2 liter of water",
+    "home_sleep_option":"Sleep for 8 hours",
+    "home_walking_option":"Walk",
+    "home_fruit_option":"Eat vegetables",
+    "home_smoking_option":"Smoke cigarettes",
+    "home_alcohol_option":"Alcohol consumption",
+    "home_fastfood_option":"Fast food consumption",
+
+    "incomplited_profile":"Incomplited profile",
+    "incomplited_profile_messege":"You have not fully filled out your profile information. Fill in all data fields and you can continue."
 }

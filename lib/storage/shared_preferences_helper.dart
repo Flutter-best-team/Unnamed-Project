@@ -1,9 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
-
 class SharedPreferencesHelper {
   static double currentProgress = 0.0;
   static DateTime currentDate = DateTime.now();
-
   static final List<String> healthyItems = [
     'Поход в спортзал',
     'Выпил 2 л воды',
@@ -11,7 +9,6 @@ class SharedPreferencesHelper {
     'Прогулка на свежем воздухе',
     'Скушал фрукты/овощи',
   ];
-
   static final List<String> unhealthyItems = [
     'Курение сигарет',
     'Употребление алкоголя',
@@ -21,13 +18,13 @@ class SharedPreferencesHelper {
   static List<bool> healthySelections = [false, false, false, false, false];
   static List<bool> unhealthySelections = [false, false, false];
 
+
   static Future<void> loadProgress(Function setState) async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
       currentProgress = prefs.getDouble('currentProgress') ?? 0.0;
       currentDate =
           DateTime.tryParse(prefs.getString('currentDate') ?? '') ?? DateTime.now();
-
       if (currentDate.day != DateTime.now().day) {
         currentProgress = 0.0;
         prefs.setDouble('currentProgress', 0.0);
@@ -35,7 +32,6 @@ class SharedPreferencesHelper {
       }
     });
   }
-
   static Future<void> updateProgress(Function setState, double value) async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
@@ -45,7 +41,6 @@ class SharedPreferencesHelper {
       prefs.setDouble('currentProgress', currentProgress);
     });
   }
-
   static Future<void> updateStatistics(String item, int value) async {
     final prefs = await SharedPreferences.getInstance();
     if (healthyItems.contains(item)) {
@@ -58,4 +53,6 @@ class SharedPreferencesHelper {
       prefs.setInt(key, currentCount + value);
     }
   }
+
+
 }
